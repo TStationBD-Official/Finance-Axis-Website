@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceAxis | Master Your Money</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Search Console Verification Tag - Paste yours below -->
+    <!-- <meta name="google-site-verification" content="YOUR_CODE_HERE" /> -->
+    <style>
+        :root { 
+            --primary: #FFD700; 
+            --primary-dark: #B8860B; 
+            --bg: #0F0F0F; 
+            --surface: #1A1A1A; 
+            --text: #FFFFFF; 
+            --text-dim: #A0A0A0; 
+            --accent: #2ECC71; 
+        }
+        
+        html { overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Lato', sans-serif; scroll-behavior: smooth; overflow-wrap: break-word; word-break: break-word; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; width: 100%; }
+        img { max-width: 100%; height: auto; }
+
+        /* Navbar */
+        nav {
+            padding: 12px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15,15,15,0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+        .nav-logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .nav-logo-img { width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0; }
+        .nav-logo-text { font-weight: 700; color: var(--primary); font-size: 1.4rem; white-space: nowrap; }
+
+        .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.85rem; font-weight: 700; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero */
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center;
+            padding: 100px 5% 60px; 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0f0f0f 100%); 
+            text-align: center;
+        }
+        .hero-logo { width: 120px; height: 120px; border-radius: 28px; margin-bottom: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); animation: float 3s ease-in-out infinite; }
+        .hero-content { max-width: 800px; animation: fadeInUp 1s ease-out; }
+        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-content span { color: var(--primary); }
+        .hero-content p { font-size: clamp(1rem, 4vw, 1.25rem); color: var(--text-dim); margin-bottom: 40px; }
+        
+        .btn { background: var(--primary); color: #000; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-block; transition: 0.3s; font-size: 1.1rem; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,215,0,0.3); }
+
+        /* Features */
+        .features { padding: 100px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section-title { margin-bottom: 60px; font-size: clamp(2rem, 5vw, 2.8rem); }
+        .section-title span { color: var(--primary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 30px; }
+        .card { background: var(--surface); padding: 40px; border-radius: 24px; transition: 0.4s; border: 1px solid #333; text-align: left; }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; color: var(--primary); }
+        .card p { color: var(--text-dim); font-size: 1rem; }
+
+        /* Pricing/Comparison */
+        .pricing { padding: 100px 5%; background: #0a0a0a; }
+        .pricing-container { max-width: 1000px; margin: 0 auto; }
+        .comp-table-wrapper { width: 100%; overflow-x: auto; border-radius: 20px; background: var(--surface); border: 1px solid #333; }
+        .comp-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .comp-table th, .comp-table td { padding: 22px; text-align: left; border-bottom: 1px solid #333; }
+        .comp-table th { background: #222; color: var(--primary); font-size: 1.1rem; }
+        .pro-val { color: var(--primary); font-weight: 700; }
+
+        /* Footer */
+        footer { padding: 80px 5% 40px; text-align: center; background: #000; border-top: 1px solid #222; }
+        .footer-logo { width: 60px; height: 60px; border-radius: 12px; margin-bottom: 20px; }
+        .footer-links { margin-bottom: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .footer-links a:hover { color: var(--primary); }
+        .copyright { color: #555; font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* Animations */
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Tablet Adjustments */
+        @media (max-width: 900px) {
+            .features, .pricing { padding-left: 6%; padding-right: 6%; }
+            .comp-table th, .comp-table td { padding: 16px; font-size: 0.95rem; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            nav { padding: 10px 4%; }
+            .nav-links { gap: 10px; width: 100%; }
+            .nav-links a { font-size: 0.7rem; }
+            .nav-logo-text { font-size: 1.1rem; }
+            .hero { padding-top: 140px; }
+            .hero-logo { width: 100px; height: 100px; }
+            .card { padding: 30px; }
+            .btn { padding: 16px 32px; font-size: 1rem; }
+            .footer-links { gap: 14px; }
+        }
+
+        /* Small Phone Adjustments */
+        @media (max-width: 380px) {
+            nav { padding: 8px 4%; }
+            .nav-links { gap: 8px; }
+            .nav-links a { font-size: 0.62rem; }
+            .nav-logo-text { font-size: 1rem; }
+            .hero { padding: 150px 6% 50px; }
+            .hero-logo { width: 84px; height: 84px; }
+            .btn { padding: 14px 26px; font-size: 0.95rem; }
+            .card { padding: 24px; }
+            .comp-table th, .comp-table td { padding: 14px 12px; font-size: 0.85rem; }
+            .footer-links { gap: 12px; }
+            .footer-links a { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo-container">
+            <img src="logo.png" alt="FinanceAxis" class="nav-logo-img">
+            <span class="nav-logo-text">FinanceAxis</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="privacy-policy.html">Privacy</a>
+            <a href="terms-conditions.html">Terms</a>
+            <a href="delete-account.html">Delete Account</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="logo.png" alt="FinanceAxis Logo" class="hero-logo">
+        <div class="hero-content">
+            <h1>Take Control of Your <span>Financial</span> Future.</h1>
+            <p>Smart transaction tracking, visual spending reports, and ultra-secure backups. Experience the gold standard of personal finance management.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.tstationbd.financeaxis&hl=en" class="btn">Download on Google Play</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Master Your Money with <span>FinanceAxis?</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡ Rapid Tracking</h3>
+                <p>Log transactions in under 3 seconds. Simple, intuitive, and built for speed.</p>
+            </div>
+            <div class="card">
+                <h3>📊 Visual Reports</h3>
+                <p>See exactly where your money goes with clear charts and monthly breakdowns of your income and expenses.</p>
+            </div>
+            <div class="card">
+                <h3>☁️ Secure Backups</h3>
+                <p>Your data is yours. Automated cloud sync and personal Google Drive backups keep your history safe.</p>
+            </div>
+            <div class="card">
+                <h3>🎭 Custom Experience</h3>
+                <p>Choose from 35+ premium themes and full dark mode support to match your style.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pro">
+        <div class="pricing-container">
+            <h2 class="section-title" style="text-align:center">The <span>Pro</span> Advantage</h2>
+            <div class="comp-table-wrapper">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Free Plan</th>
+                            <th>Pro Plan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Daily Transactions</td><td>10 / Day</td><td class="pro-val">Unlimited</td></tr>
+                        <tr><td>Cloud Backups</td><td>Local Only</td><td class="pro-val">Google Drive Integration</td></tr>
+                        <tr><td>Reports & Analytics</td><td>Essential & Monthly</td><td class="pro-val">Advanced & Full Export History</td></tr>
+                        <tr><td>Themes</td><td>Limited</td><td class="pro-val">All 35+ Premium Themes</td></tr>
+                        <tr><td>Experience</td><td>Ad-Supported</td><td class="pro-val">100% Ad-Free</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="FinanceAxis" class="footer-logo">
+        <div class="footer-links">
+            <a href="https://play.google.com/store/apps/details?id=com.tstationbd.financeaxis&hl=en">Download on Google Play</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="terms-conditions.html">Terms & Conditions</a>
+            <a href="delete-account.html">Delete Account</a>
+            <a href="mailto:support.financeaxis@gmail.com">Support</a>
+        </div>
+        <p class="copyright">A product of <a href="https://tstationbd.vercel.app/" style="color:#A0A0A0; text-decoration:underline;">TStationBD</a></p>
+        <p class="copyright">&copy; 2026 TStationBD. All rights reserved.</p>
+    </footer>
+</body>
+</html>
